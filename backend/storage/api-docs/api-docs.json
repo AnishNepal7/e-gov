@@ -1,0 +1,174 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My Laravel API",
+        "description": "This is the API documentation for my Laravel application.",
+        "contact": {
+            "email": "support@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/api/v1/vacancies": {
+            "get": {
+                "tags": [
+                    "Vacancies"
+                ],
+                "summary": "List all vacancies",
+                "description": "Fetch a paginated list of vacancies.",
+                "operationId": "a13ca69d60fdbae06281010f83b2008f",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Vacancy"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "object"
+                                        },
+                                        "meta": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                }
+            }
+        },
+        "/api/v1/vacancies/{id}": {
+            "get": {
+                "tags": [
+                    "Vacancies"
+                ],
+                "summary": "Get a single vacancy",
+                "description": "Fetch details of a specific vacancy by ID.",
+                "operationId": "588af2aaa7abfb7ca8ea7b8ed4bbcc13",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the vacancy",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vacancy"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Vacancy not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Vacancy not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Vacancy": {
+                "description": "Vacancy model schema",
+                "properties": {
+                    "id": {
+                        "description": "Vacancy ID",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "Name of the vacancy",
+                        "type": "string",
+                        "example": "Software Engineer"
+                    },
+                    "description": {
+                        "description": "Details about the vacancy",
+                        "type": "string",
+                        "example": "A position for an experienced software engineer."
+                    },
+                    "date": {
+                        "description": "Date associated with the vacancy",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-02-15"
+                    },
+                    "status": {
+                        "description": "Status of the vacancy (0: disabled, 1: enabled)",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-01T00:00:00Z"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-10T00:00:00Z"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Vacancies",
+            "description": "Vacancies"
+        }
+    ]
+}
