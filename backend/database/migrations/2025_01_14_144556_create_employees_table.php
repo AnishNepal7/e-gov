@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('phone');
             $table->string('position');
-            $table->enum('status', ['active', 'inactive']);
+            $table->integer('status')->comment('0:disabled 1:enabled');
             $table->timestamps();
         });
     }

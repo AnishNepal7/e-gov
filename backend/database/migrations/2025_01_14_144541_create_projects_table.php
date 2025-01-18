@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->date('date');
-            $table->enum('phase', ['inprogress', 'completed']);
-            $table->enum('status', ['enable', 'disable']);
+            
+            $table->integer('phase')->comment('0:inprogress 1:completed');
+            $table->integer('status')->comment('0:disabled 1:enabled');
             $table->timestamps();
         });
     }

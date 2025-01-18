@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('father_name');
             $table->string('mother_name');
             $table->string('grandfather_name');
-            $table->date('citizenship_id');
+            $table->string('citizenship_id');
             $table->string('gender');
             $table->string('issued_by');
             $table->timestamps();

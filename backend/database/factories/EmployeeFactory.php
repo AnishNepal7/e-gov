@@ -17,6 +17,11 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         return [
+            'name'=>$this->faker->name(),
+            'image'=>$this->faker->imageUrl(),
+            'position'=>$this->faker->jobTitle(),
+            'phone'=>$this->faker->numerify('9#########'),
+            'status'=>$this->faker->randomElement([0,1])
             //
         ];
     }
