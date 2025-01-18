@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\BirthRecord;
+use App\Models\DeathRecord;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -24,6 +26,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Route::model('birthrecord', BirthRecord::class);
+        Route::model('deathrecord', DeathRecord::class);
+
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
