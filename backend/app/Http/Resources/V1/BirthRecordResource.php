@@ -14,6 +14,16 @@ class BirthRecordResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
+        return [
+            'id'=>$this->id,
+            'name'=>$this->name,
+            'fatherName'=>$this->father_name,
+            'motherName'=>$this->mother_name,
+            'grandfatherName'=>$this->grandfather_name,
+            'dob'=>$this->dob,
+            'gender'=>$this->gender,
+            'issuedBy'=>$this->issued_by
+        ];
     }
 }
