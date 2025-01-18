@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\StoreBirthRequest;
 use App\Http\Resources\V1\BirthRecordCollection;
 use App\Http\Resources\V1\BirthRecordResource;
 use App\Models\BirthRecord;
@@ -20,5 +21,18 @@ class BirthRecordController extends Controller
     {
         
         return new BirthRecordResource($birthRecord);
+    }
+    public function store(StoreBirthRequest $request)
+    {
+        return new BirthRecordResource(BirthRecord::create($request->all()));
+
+    }
+    public function update()
+    {
+
+    }
+    public function destroy()
+    {
+
     }
 }

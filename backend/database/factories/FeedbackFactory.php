@@ -23,5 +23,6 @@ class FeedbackFactory extends Factory
             'description'=>$this->faker->paragraph(),
             'image'=>$this->faker->imageUrl()
         ];
+        
     }
 }

@@ -21,7 +21,7 @@ class DeathRecordResource extends JsonResource
             'fatherName'=>$this->father_name,
             'motherName'=>$this->mother_name,
             'grandfatherName'=>$this->grandfather_name,
-            'citizenshipId'=>$this->dob,
+            'citizenshipId'=>$this->citizenship_id,
             'gender'=>$this->gender,
             'issuedBy'=>$this->issued_by
         ];

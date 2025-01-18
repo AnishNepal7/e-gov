@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\StoreEmployeeRequest;
 use App\Http\Resources\V1\EmployeeCollection;
 use App\Http\Resources\V1\EmployeeResource;
 use App\Models\Employee;
@@ -19,5 +20,18 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return new EmployeeResource($employee);
+    }
+    public function store(StoreEmployeeRequest $request)
+    {
+        return new EmployeeResource(Employee::create($request->all()));
+
+    }
+    public function update()
+    {
+
+    }
+    public function destroy()
+    {
+        
     }
 }
