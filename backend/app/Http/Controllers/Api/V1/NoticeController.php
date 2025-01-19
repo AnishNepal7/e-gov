@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreNoticeRequest;
+use App\Http\Requests\V1\UpdateNoticeRequest;
 use App\Http\Resources\V1\NoticeCollection;
 use App\Http\Resources\V1\NoticeResource;
 use App\Models\Notice;
@@ -27,8 +28,9 @@ class NoticeController extends Controller
         return new NoticeResource(Notice::create($request->all()));
 
     }
-    public function update()
+    public function update(UpdateNoticeRequest $request,Notice $notice)
     {
+        $notice->update($request->all());
 
     }
     public function destroy()

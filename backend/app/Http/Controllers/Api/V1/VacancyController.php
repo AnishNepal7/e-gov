@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreVacancyRequest;
+use App\Http\Requests\V1\UpdateVacancyRequest;
 use App\Http\Resources\V1\VacancyCollection;
 use App\Http\Resources\V1\VacancyResource;
 use App\Models\Vacancy;
@@ -84,8 +85,10 @@ class VacancyController extends Controller
         return new VacancyResource(Vacancy::create($request->all()));
 
     }
-    public function update()
+    public function update(UpdateVacancyRequest $request,Vacancy $vacancy)
     {
+        return "hi";
+        $vacancy->update($request->all());
 
     }
     public function destroy()

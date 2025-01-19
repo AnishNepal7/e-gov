@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreFeedbackRequest;
+use App\Http\Requests\V1\UpdateFeedbackRequest;
 use App\Http\Resources\V1\FeedbackCollection;
 use App\Http\Resources\V1\FeedbackResource;
 use App\Models\Feedback;
@@ -27,8 +28,9 @@ class FeedbackController extends Controller
         return new FeedbackResource(Feedback::create($request->all()));
 
     }
-    public function update()
+    public function update(UpdateFeedbackRequest $request,Feedback $feedback)
     {
+        //currently no need to update feedback
 
     }
     public function destroy()
