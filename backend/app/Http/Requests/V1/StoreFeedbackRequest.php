@@ -25,7 +25,8 @@ class StoreFeedbackRequest extends FormRequest
             'name' => 'required|string|max:255', // Name is required, must be a string, and limited to 255 characters
             'email' => 'required|email|max:255', // Email is required, must be a valid email,
             'description' => 'required|string', // Description is required and must be a string
-            'image' => 'nullable|string|max:255', // Image is optional, must be a string, and limited to 255 characters
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+
             //
         ];
     }

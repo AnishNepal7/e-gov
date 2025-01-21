@@ -11,7 +11,7 @@ class UpdateFeedbackRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,29 @@ class UpdateFeedbackRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        $method=$this->method();
+        if($method=='PUT')
+        {
+            return [
+                'name' => 'required|string|max:255', // Name is required, must be a string, and limited to 255 characters
+                'email' => 'required|email|max:255', // Email is required, must be a valid email,
+                'description' => 'required|string', // Description is required and must be a string
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+    
+                //
+            ];
+
+        }
+        else{
+            return [
+                'name' => 'sometimes|required|string|max:255', // Name is required, must be a string, and limited to 255 characters
+                'email' => 'sometimes|required|email|max:255', // Email is required, must be a valid email
+                'description' => 'sometimes|required|string', // Description is required and must be a string
+                'image' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:5120', // Image is optional, but if present, it must be an image and meet other requirements
+            ];
+            
+
+        }
+       
     }
 }
