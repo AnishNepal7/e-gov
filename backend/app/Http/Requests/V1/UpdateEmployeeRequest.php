@@ -26,7 +26,7 @@ class UpdateEmployeeRequest extends FormRequest
         {
             return [
                 'name' => 'required|string|max:255', // Name is required, must be a string, and limited to 255 characters
-                'image' => 'nullable|string|max:255', // Image is required, must be a string, and limited to 255 characters
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
                 'phone' => 'required|string|regex:/^\d{10,15}$/', // Phone is required, must be a string, and match 10-15 digits
                 'position' => 'required|string|max:255', // Position is required, must be a string, and limited to 255 characters
                 'status' => 'required|integer|in:0,1', // Status is required, must be an integer, and values should be 0 or 1
@@ -37,7 +37,7 @@ class UpdateEmployeeRequest extends FormRequest
         else{
             return [
                 'name' => ['sometimes', 'required', 'string', 'max:255'], // Name is required, must be a string, and limited to 255 characters
-                'image' => ['sometimes', 'nullable', 'string', 'max:255'], // Image is optional, must be a string, and limited to 255 characters
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
                 'phone' => ['sometimes', 'required', 'string', 'regex:/^\d{10,15}$/'], // Phone is required, must be a string, and match 10-15 digits
                 'position' => ['sometimes', 'required', 'string', 'max:255'], // Position is required, must be a string, and limited to 255 characters
                 'status' => ['sometimes', 'required', 'integer', 'in:0,1'] // Status is required, must be an integer, and values should be 0 or 1

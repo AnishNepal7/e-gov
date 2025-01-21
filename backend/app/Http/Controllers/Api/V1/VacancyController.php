@@ -87,7 +87,7 @@ class VacancyController extends Controller
     }
     public function update(UpdateVacancyRequest $request,Vacancy $vacancy)
     {
-        return "hi";
+        // return "hi";
         $vacancy->update($request->all());
 
     }
