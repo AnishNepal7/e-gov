@@ -34,7 +34,7 @@ class EmployeeController extends Controller
             $imageName = time() . '_' . pathinfo($originalName, PATHINFO_FILENAME) . '.' . $request->file('image')->extension();
 
             // Store image in 'storage/app/public/employees' and get the file path
-            $imagePath = $request->file('image')->store('employees', 'public');
+            
             $imagePath = $request->file('image')->storeAs('employees', $imageName, 'public');
 
             // Store the relative path (storage/employees/filename.png) in the database
@@ -68,7 +68,7 @@ class EmployeeController extends Controller
         $employee->update($data);
 
     }
-    
+
     public function destroy(Employee $employee)
     {
         if ($employee->image) {
