@@ -33,8 +33,14 @@ class NoticeController extends Controller
         $notice->update($request->all());
 
     }
-    public function destroy()
+    public function destroy(Notice $notice)
     {
+        $notice->delete();
+
+    // Return a 200 OK response with a message
+    return response()->json([
+        'message' => 'Death record deleted successfully.',
+    ], 200);
         
     }
 }

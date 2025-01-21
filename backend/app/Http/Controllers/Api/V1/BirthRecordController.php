@@ -33,8 +33,12 @@ class BirthRecordController extends Controller
         $birthRecord->update($request->all());
 
     }
-    public function destroy()
+    public function destroy(BirthRecord $birthRecord)
     {
+        $birthRecord->delete();
+        return response()->json([
+            'message' => 'Birth record deleted successfully.',
+        ], 200);
 
     }
 }

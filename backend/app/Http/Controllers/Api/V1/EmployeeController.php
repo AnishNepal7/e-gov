@@ -22,7 +22,14 @@ class EmployeeController extends Controller
 
     public function show(Employee $employee)
     {
+        if($employee)
+        {
+            return $employee;
         return new EmployeeResource($employee);
+        }
+        return response()->json([
+            'message' => 'Employee not found.'
+        ], 404);
     }
 
     public function store(StoreEmployeeRequest $request)

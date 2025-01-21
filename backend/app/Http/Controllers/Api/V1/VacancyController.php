@@ -91,8 +91,14 @@ class VacancyController extends Controller
         $vacancy->update($request->all());
 
     }
-    public function destroy()
+    public function destroy(Vacancy $vacancy)
     {
+        $vacancy->delete();
+
+    // Return a 200 OK response with a message
+    return response()->json([
+        'message' => 'Death record deleted successfully.',
+    ], 200);
         
     }
 
